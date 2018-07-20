@@ -1,0 +1,4 @@
+Help on method randint in module random:
+
+rraannddiinntt(a, b) method of random.Random instance
+    Return random integer in range [a, b], including both end points.
