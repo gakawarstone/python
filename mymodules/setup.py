@@ -1,4 +1,4 @@
-from setutools import setup
+from setuptools import setup
 
 setup(
     name = 'vsearch',
