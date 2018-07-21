@@ -3,7 +3,7 @@ def double(arg):
     arg = arg * 2
     print('After: ', arg)
 
-def change(argg :
+def change(arg):
     print('Before: ', arg)
     arg.append('More data')
     print('After: ', arg)
