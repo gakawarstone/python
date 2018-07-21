@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, escape
 from vsearch import search4letters
 
 app = Flask(__name__)
@@ -6,7 +6,10 @@ app = Flask(__name__)
 
 def log_request(req: 'flask_request', res: str) -> None:
     with open('vsearch.log', 'a') as log:
-        print(req, res, file=log)
+        print(req.form, file=log, end='|')
+        print(req.remote_addr, file=log, end='|')
+        print(req.user_agent, file=log, end='|')
+        print(res, file=log)
 
 
 @app.route('/search4', methods=['post'])
@@ -34,7 +37,7 @@ def entry_page() -> 'html':
 def view_the_log() -> str:
     with open('vsearch.log') as log:
         contents = log.read()
-    return contents
+    return escape(contents)
 
 
 if __name__ == '__main__':
