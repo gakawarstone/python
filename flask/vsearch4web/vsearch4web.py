@@ -30,5 +30,12 @@ def entry_page() -> 'html':
                            the_title='Welcome to search4letters on the web!')
 
 
+@app.route('/viewlog')
+def view_the_log() -> str:
+    with open('vsearch.log') as log:
+        contents = log.read()
+    return contents
+
+
 if __name__ == '__main__':
     app.run(debug=True)
