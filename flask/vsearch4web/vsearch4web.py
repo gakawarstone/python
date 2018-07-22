@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 
 def log_request(req: 'flask_request', res: str) -> None:
+    """Journal web-request and return results."""
     dbconfig = {'host': '127.0.0.1',
                 'user': 'vsearch',
                 'password': 'vsearchpasswd',
