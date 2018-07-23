@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, escape
 from vsearch import search4letters
 import mysql.connector
 
+
 app = Flask(__name__)
 
 
