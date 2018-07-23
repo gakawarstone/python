@@ -1,18 +1,20 @@
 from flask import Flask, render_template, request, redirect, escape
 from vsearch import search4letters
-import DBcm
+from DBcm import UseDataBase
 
 
 app = Flask(__name__)
 
 
+app.config['dbconfig'] = {'host': '127.0.0.1',
+                          'user': 'vsearch',
+                          'password': 'vsearchpasswd',
+                          'database': 'vsearchlogDB', }
+
+
 def log_request(req: 'flask_request', res: str) -> None:
     """Journal web-request and return results."""
-    dbconfig = {'host': '127.0.0.1',
-                'user': 'vsearch',
-                'password': 'vsearchpasswd',
-                'database': 'vsearchlogDB', }
-    with UseDatabase(dbconfig) as cursor:
+    with UseDataBase(app.config['dbconfig']) as cursor:
         _SQL = """insert into log
                   (phrase, letters, ip, browser_string, results)
                   values
@@ -47,13 +49,12 @@ def entry_page() -> 'html':
 
 @app.route('/viewlog')
 def view_the_log() -> 'html':
-    contents = []
-    with open('vsearch.log') as log:
-        for line in log:
-            contents.append([])
-            for item in line.split('|'):
-                contents[-1].append(escape(item))
-    titles = ('Form Data', 'Remote_addr', 'User_agent', 'Results')
+    with UseDataBase(app.config['dbconfig']) as cursor:
+        _SQL = """select phrase, letters, ip, browser_string, Results
+                  from log"""
+        cursor.execute(_SQL)
+        contents = cursor.fetchall()
+    titles = ('phrase', 'letters', 'Remote_addr', 'User_agent', 'Results')
     return render_template('viewlog.html',
                            the_title='View Log',
                            the_row_titles=titles,
