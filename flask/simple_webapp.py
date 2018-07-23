@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, session
 
 app = Flask(__name__)
 
@@ -8,19 +8,39 @@ def hello() -> str:
     return 'hello from the simple webapp'
 
 
-app.route('/page1')
+@app.route('/page1')
 def page1() -> str:
         return 'This is page 1'
 
 
-app.route('/page2')
+@app.route('/page2')
 def page2() -> str:
         return 'This is page 2'
 
 
-app.route('/page3')
+@app.route('/page3')
 def page3() -> str:
         return 'This is page 3'
+
+
+@app.route('/login')
+    session['logged in'] = True
+    return 'You are now logged in.'
+
+
+app.secret_key = 'YouWillNeverGuessMySecretKey'
+
+
+@app.route('/logout')
+def do_logout() -> str:
+    session.pop('logged_in')
+
+
+@app.route('/status')
+def chek_status() -> str:
+    if 'logged in' in session:
+        return 'You are currently logged in'
+    return 'You are NOT logged in'
 
 
 if __name__ == '__main__':
