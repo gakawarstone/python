@@ -29,6 +29,7 @@ def page3() -> str:
 
 
 @app.route('/login')
+def do_login():
     session['logged in'] = True
     return 'You are now logged in.'
 
@@ -39,13 +40,6 @@ app.secret_key = 'YouWillNeverGuessMySecretKey'
 @app.route('/logout')
 def do_logout() -> str:
     session.pop('logged_in')
-
-
-@app.route('/status')
-def chek_status() -> str:
-    if 'logged in' in session:
-        return 'You are currently logged in'
-    return 'You are NOT logged in'
 
 
 if __name__ == '__main__':
