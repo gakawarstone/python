@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, escape
+from flask import Flask, render_template, request, redirect, escape, session
 from vsearch import search4letters
 from DBcm import UseDataBase, ConnectionError, CredentialError, SQLError
 from checker import check_logged_in
@@ -63,7 +63,7 @@ def view_the_log() -> 'html':
                       from log"""
             cursor.execute(_SQL)
             contents = cursor.fetchall()
-        titles = ('phrase', 'letters', 'Remote_addr', 'User_agent', 'Results')
+        titles = ('phrase', 'letters', 'Remote_addr', 'browser', 'Results')
         return render_template('viewlog.html',
                                the_title='View Log',
                                the_row_titles=titles,
