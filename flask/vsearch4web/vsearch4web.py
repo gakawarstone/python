@@ -75,5 +75,19 @@ def view_the_log() -> 'html':
         print('Something went wrong:', str(err))
 
 
+@app.route('/login')
+def do_login():
+    session['logged in'] = True
+    return 'You are now logged in.'
+
+
+app.secret_key = 'YouWillNeverGuessMySecretKey'
+
+
+@app.route('/logout')
+def do_logout() -> str:
+    session.pop('logged_in')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
