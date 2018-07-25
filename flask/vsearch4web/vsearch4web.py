@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect, escape
 from vsearch import search4letters
-from DBcm import UseDataBase, ConnectionError, CredentialError
+from DBcm import UseDataBase, ConnectionError, CredentialError, SQLError
 from checker import check_logged_in
 
 
@@ -69,6 +69,8 @@ def view_the_log() -> 'html':
         print('Is your database switchd on? Error:', str(err))
     except CredentialError as err:
         print('User-id/Password issues. Error', str(err))
+    except SQLError as err:
+        print('Is your query correct? Error:', str(err))
     except Exception as err:
         print('Something went wrong:', str(err))
 
