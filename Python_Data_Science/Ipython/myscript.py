@@ -4,4 +4,4 @@ def square(x: int) -> int:
 
 
 for N in range(1, 4):
-    print(N, 'squared is', squere(N))
+    print(N, 'squared is', square(N))
