@@ -1,10 +1,10 @@
-from math import sqrt, modf
+from math import sqrt
 
 
 def siple(x):
     k = int(sqrt(x))
     for i in range(k):
-        if x % (i + 1) != 0:
+        if x % (i + 2) == 0:
             return 0
     return 1
 
