@@ -1,3 +1,6 @@
+import numpy as np
+
+
 def massive(n, mass):
     for i in range(n):
         mass[i] = i + 1
@@ -20,10 +23,18 @@ def post(x, y):
     check = {}
     massive(x, mass)
     n = 0
-    r = 0
     k = 0
+    r = 0
+    c = 0
     for c in range(y):
-        check[c] = number(x, mass)
+        for i in range(x):
+            check[c] = mass[i]
+            k = check[c]
+            if k == x:
+                c -= 1
+            if c < y:
+                c += 1
+            print(k)
     return r
 
 
