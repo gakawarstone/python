@@ -26,15 +26,13 @@ def post(x, y):
     k = 0
     r = 0
     c = 0
-    for c in range(y):
-        for i in range(x):
-            check[c] = mass[i]
-            k = check[c]
-            if k == x:
-                c -= 1
-            if c < y:
-                c += 1
-            print(k)
+    for i in range(x):
+        c = y - 1
+        check[c] = mass[i]
+        k = check[c]
+        if i == x - 1:
+            i += 1
+            c -= 1
     return r
 
 
