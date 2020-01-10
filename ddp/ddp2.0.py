@@ -26,19 +26,19 @@ def post(x, y):
     r = 0
     c = 0
     i = 0
+    full_row = False
     for i in range(x):
         c = y - 1
         check[c] = mass[i]
         k = check[c]
         if i == x - 1:
             check[c - 1] += 1
-            n = check[c - 1]
-            i = 0
-        if n == x - 1:
+            # post(x, y)
+        if check[c - 1] == x:
             c -= 1
-        if k < x - 1 and c != y - 1:
+        if check[c] < x - 1 and c != y - 1:
             c += 1
-        print(k)
+        print(check[0], check[1], check[2])
     return r
 
 
