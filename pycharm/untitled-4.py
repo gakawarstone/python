@@ -1,4 +1,4 @@
-x_start  = int(input())
+x_start = int(input())
 x_end = int(input())
 y_start = int(input())
 y_end = int(input())
