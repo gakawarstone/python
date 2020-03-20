@@ -13,4 +13,4 @@ for c in genom:
         number = 0
     i += 1
 
-print(genom[i], number + 1, sep='', end='')
+print(genom[i], number + 1, sep='', end='\n')
