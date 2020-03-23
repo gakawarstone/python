@@ -18,10 +18,16 @@ def cnt_words(input_source):
     return output_source
 
 
+def dict_output(d):
+    for key in d:
+        print(key, ':', sep='', end=' ')
+        print(d[key])
+
+
 def main():
-    d = read()
-    my_dict = cnt_words(d)
-    print(*my_dict)
+    str = read()
+    my_dict = cnt_words(str)
+    dict_output(my_dict)
 
 
 main()
