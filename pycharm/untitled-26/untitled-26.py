@@ -36,8 +36,20 @@ def list_middle(l):
 
 def main():
     d = read('input.txt')
-    dict_output(d)
-    print(list_middle(d['s']))
+#    dict_output(d)
+    for key in d:
+        print(list_middle(d[key]))
+    d_1 = []
+    d_2 = []
+    d_3 = []
+    for key in d:
+        d_key = d[key]
+        d_1.append(d_key[0])
+        d_2.append(d_key[1])
+        d_3.append(d_key[2])
+    print(list_middle(d_1), end=' ')
+    print(list_middle(d_2), end=' ')
+    print(list_middle(d_3))
 
 
 main()
