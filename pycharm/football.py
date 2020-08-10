@@ -31,7 +31,10 @@ def update_dictionary(d, key, value, mode='list'):
 def dict_output(d):
     for key in d:
         print(key, ':', sep='', end=' ')
-        print(d[key])
+        d_key = d[key]
+        for value in d_key:
+            print(d_key[value], end=' ')
+        print()
 
 
 def chart(d, l_str):

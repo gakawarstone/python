@@ -1,9 +1,10 @@
 import random
-d = {1: 'а',
-     2: 'в',
-     3: 'с',
-     4: 'д',
-     5: 'е'
+from timeit import default_timer as timer
+d = {1: 'A',
+     2: 'B',
+     3: 'C',
+     4: 'D',
+     5: 'E'
      }
 
 d_prc = {}
@@ -41,6 +42,7 @@ def cnt_prc(str, number, dict):
 def main():
     number = int(input())
     my_str = ''
+    start = timer()
     for i in range(number):
         k = random.randint(1, 5)
         my_str += d[k]
@@ -50,6 +52,8 @@ def main():
     file_write('output.txt', my_str)
     cnt_prc(my_str, number, d_prc)
     dict_output(d_prc)
+    duration = timer() - start
+    print('Time:', duration)
 
 
 main()
