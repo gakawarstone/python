@@ -8,8 +8,8 @@ pygame.display.set_caption('GK')
 
 x = 23
 y = 78
-width = 40
-height = 40
+width = 70
+height = 30
 speed = 1
 speed_x = 1
 speed_y = 1
@@ -33,11 +33,11 @@ def splash(x, y, speed_x, speed_y):
     if y < 1:
         speed_y = -speed_y
     if y > 499 - height:
-        speed_y = -speed_y - 1
+        speed_y = -speed_y
     if x < 1:
         speed_x = -speed_x
-    if x > 499 - height:
-        speed_x = -speed_x - 1
+    if x > 499 - width:
+        speed_x = -speed_x
     return x, y, speed_x, speed_y
 
 
