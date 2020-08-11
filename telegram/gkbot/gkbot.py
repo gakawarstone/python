@@ -1,5 +1,9 @@
 import telebot
-bot = telebot.TeleBot('1159177907:AAHJLhyVsJ3ZgT5ZX7k2aWz7uEK_oBYT9NA')
+import config
+from aiogram.types import ReplyKeyboardRemove, \
+    ReplyKeyboardMarkup, KeyboardButton, \
+    InlineKeyboardMarkup, InlineKeyboardButton
+bot = telebot.TeleBot(config.token)
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
     print(message.text)
