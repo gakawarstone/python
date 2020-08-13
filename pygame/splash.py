@@ -21,7 +21,6 @@ def splash():
 
         config.splash_y += config.splash_speed_y
         config.splash_x += config.splash_speed_x
-        print(config.splash_x, config.splash_y)
         if config.splash_y < 1:
             config.splash_speed_y = -config.splash_speed_y
             R = random.randint(0, 255)
@@ -45,7 +44,7 @@ def splash():
 
         config.win.fill((0, 0, 0))
         pygame.draw.rect(config.win, (R, G, B), (config.splash_x,
-                                                   config.splash_y,
-                                                   config.splash_width,
-                                                   config.splash_height))
+                                                 config.splash_y,
+                                                 config.splash_width,
+                                                 config.splash_height))
         pygame.display.update()

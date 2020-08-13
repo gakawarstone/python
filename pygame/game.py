@@ -25,6 +25,10 @@ def moving():
         x += speed
 
 
+def main_screen():
+    return
+
+
 splash()
 
 
