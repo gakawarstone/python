@@ -1,6 +1,6 @@
 import pygame
 from splash import splash
-import config
+import config as c
 pygame.init()
 pygame.display.set_caption('GK')
 
