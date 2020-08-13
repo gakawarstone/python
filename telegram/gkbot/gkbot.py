@@ -20,6 +20,8 @@ def answ(message):
     dict = {
         'Пидор': 'Сам пидор',
         'пидор': 'Сам пидор',
+        'Зря быканул': 'Согласен',
+        'зря быканул': 'Согласен',
     }
     if message.text in dict:
         bot.send_message(message.chat.id, dict[message.text])
