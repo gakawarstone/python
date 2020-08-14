@@ -5,7 +5,7 @@ import color as cl
 pygame.init()
 pygame.display.set_caption('GK')
 
-jojo = pygame.image.load('jojo')
+jojo = pygame.image.load('jojo1.jpg')
 
 
 def draw_img(x, y):
@@ -22,11 +22,11 @@ def main_screen():
                 run = False
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_z]:
+        if keys[pygame.K_c]:
             splash()
 
         c.win.fill(cl.white)
-        draw_img(100, 100)
+        draw_img(10, 50)
         pygame.display.update()
 
 
