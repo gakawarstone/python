@@ -2,6 +2,7 @@ import pygame
 from splash import splash
 import config as c
 import color as cl
+import time
 x = 23
 y = 78
 width = 70
@@ -61,3 +62,4 @@ def screen(chapter_name, img, text):
         pygame.draw.rect(c.win, cl.black, (320, 440, 170, 50), 1)
         gm_print('NEXT', 30, (370, 450))
         pygame.display.update()
+    time.sleep(1)
