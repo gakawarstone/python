@@ -2,6 +2,7 @@ import random as rnd
 # RGB colors dict
 black = (0, 0, 0)
 white = (255, 255, 255)
+dark_white = (200, 200, 200)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
