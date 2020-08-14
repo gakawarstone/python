@@ -1,35 +1,36 @@
 import pygame
 from splash import splash
 import config as c
+import color as cl
 pygame.init()
 pygame.display.set_caption('GK')
 
-x = 23
-y = 78
-width = 70
-height = 30
-speed = 1
-speed_x = 1
-speed_y = 1
+jojo = pygame.image.load('jojo')
 
 
-def moving():
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_w] and y > 0:
-        y -= speed
-    if keys[pygame.K_s] and y < c.win_width - width:
-        y += speed
-    if keys[pygame.K_a] and x > 0:
-        x -= speed
-    if keys[pygame.K_d] and x < c.win_height - height:
-        x += speed
+def draw_img(x, y):
+    c.win.blit(jojo, (x, y))
 
 
 def main_screen():
-    return
+    run = True
+    while run:
+        pygame.time.delay(10)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_z]:
+            splash()
+
+        c.win.fill(cl.white)
+        draw_img(100, 100)
+        pygame.display.update()
 
 
-splash()
+main_screen()
 
 
 pygame.quit()
