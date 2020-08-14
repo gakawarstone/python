@@ -45,6 +45,8 @@ def screen(chapter_name, img, text):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
             splash()
+        if keys[pygame.K_d]:
+            run = False
 
         c.win.fill(cl.dark_white)
         gm_print('Chapter: ' + chapter_name, 30, (10, 10))
