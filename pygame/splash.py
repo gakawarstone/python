@@ -1,13 +1,11 @@
 import pygame
 import config
-import random
+import color as cl
 
 
 def splash():
     run = True
-    R = 0
-    G = 0
-    B = 255
+    rect_cl = cl.blue
     while run:
         pygame.time.delay(10)
 
@@ -23,28 +21,20 @@ def splash():
         config.splash_x += config.splash_speed_x
         if config.splash_y < 1:
             config.splash_speed_y = -config.splash_speed_y
-            R = random.randint(0, 255)
-            G = random.randint(0, 255)
-            B = random.randint(0, 255)
-        if config.splash_y > 499 - config.splash_height:
+            rect_cl = cl.random()
+        if config.splash_y > config.win_height - 1 - config.splash_height:
             config.splash_speed_y = -config.splash_speed_y
-            R = random.randint(0, 255)
-            G = random.randint(0, 255)
-            B = random.randint(0, 255)
+            rect_cl = cl.random()
         if config.splash_x < 1:
             config.splash_speed_x = -config.splash_speed_x
-            R = random.randint(0, 255)
-            G = random.randint(0, 255)
-            B = random.randint(0, 255)
-        if config.splash_x > 499 - config.splash_width:
+            rect_cl = cl.random()
+        if config.splash_x > config.win_width - 1 - config.splash_width:
             config.splash_speed_x = -config.splash_speed_x
-            R = random.randint(0, 255)
-            G = random.randint(0, 255)
-            B = random.randint(0, 255)
+            rect_cl = cl.random()
 
-        config.win.fill((0, 0, 0))
-        pygame.draw.rect(config.win, (R, G, B), (config.splash_x,
-                                                 config.splash_y,
-                                                 config.splash_width,
-                                                 config.splash_height))
+        config.win.fill(cl.black)
+        pygame.draw.rect(config.win, rect_cl, (config.splash_x,
+                                               config.splash_y,
+                                               config.splash_width,
+                                               config.splash_height))
         pygame.display.update()
