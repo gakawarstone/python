@@ -6,6 +6,8 @@ dark_white = (200, 200, 200)
 red = (255, 0, 0)
 green = (0, 255, 0)
 blue = (0, 0, 255)
+rose = (220, 100, 255)
+dark_rose = (76, 46, 62)
 
 
 def random():

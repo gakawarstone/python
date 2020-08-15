@@ -8,6 +8,7 @@ chapter_name = 'DIO'
 
 
 def dio():
+    game.start()
     game.screen(chapter_name, img.jojo, 'Покажите мне Дио')
     game.screen(chapter_name, img.dio, '...')
     game.screen(chapter_name, img.jojo, 'Я сказал настоящего')

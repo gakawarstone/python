@@ -2,6 +2,7 @@ import pygame
 from splash import splash
 import config as c
 import color as cl
+import img
 import time
 x = 23
 y = 78
@@ -28,13 +29,36 @@ def draw_img(x, y, img):
     c.win.blit(img, (x, y))
 
 
-def gm_print(str, size, position):
+def gm_print(str, size, position, color=cl.black):
     f = pygame.font.SysFont('arial', size)
-    text = f.render(str, 1, cl.black)
+    text = f.render(str, 1, color)
     c.win.blit(text, position)
 
 
-def screen(chapter_name, img, text):
+def start():
+    run = True
+    while run:
+        pygame.time.delay(10)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_c]:
+            splash()
+        if keys[pygame.K_SPACE]:
+            run = False
+
+        c.win.fill(cl.dark_white)
+        draw_img(0, 0, img.start_bg)
+        gm_print('Welcome', 50, (150, 150), cl.dark_rose)
+        gm_print('Press space to continue...', 30, (100, 400), cl.dark_rose)
+        pygame.display.update()
+    time.sleep(1)
+
+
+def screen(chapter_name, img, text, sprt=''):
     run = True
     while run:
         pygame.time.delay(10)
@@ -53,6 +77,8 @@ def screen(chapter_name, img, text):
         gm_print('Chapter: ' + chapter_name, 30, (10, 10))
         gm_print(text, 15, (12, 332))
         draw_img(10, 50, img)
+        if sprt:
+            draw_img(200, 50, sprt)
         pygame.draw.rect(c.win, cl.black, (10, 330, 480, 100), 1)
 
         pygame.draw.rect(c.win, cl.black, (10, 440, 170, 50), 1)
