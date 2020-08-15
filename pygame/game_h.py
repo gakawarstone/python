@@ -13,6 +13,24 @@ speed_x = 1
 speed_y = 1
 
 
+def blit_text(surface, text, pos, font, color=pygame.Color('black')):
+    words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
+    space = font.size(' ')[0]  # The width of a space.
+    max_width, max_height = surface.get_size()
+    x, y = pos
+    for line in words:
+        for word in line:
+            word_surface = font.render(word, 0, color)
+            word_width, word_height = word_surface.get_size()
+            if x + word_width >= max_width:
+                x = pos[0]  # Reset the x.
+                y += word_height  # Start on new row.
+            surface.blit(word_surface, (x, y))
+            x += word_width + space
+        x = pos[0]  # Reset the x.
+        y += word_height  # Start on new row.
+
+
 def moving():
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w] and y > 0:
@@ -33,10 +51,23 @@ def draw_img(x, y, img, a=0):
     c.win.blit(img, (x, y))
 
 
-def gm_print(str, size, position, color=cl.black):
+def gm_print(str, size, pos, color=cl.black):
     f = pygame.font.SysFont('arial', size)
-    text = f.render(str, 1, color)
-    c.win.blit(text, position)
+    words = [word.split(' ') for word in str.splitlines()]
+    space = f.size(' ')[0]  # The width of a space.
+    max_width = c.win_width - 10
+    x, y = pos
+    for line in words:
+        for word in line:
+            word_surface = f.render(word, 1, color)
+            word_width, word_height = word_surface.get_size()
+            if x + word_width >= max_width:
+                x = pos[0]  # Reset the x.
+                y += word_height  # Start on new row.
+            c.win.blit(word_surface, (x, y))
+            x += word_width + space
+        x = pos[0]  # Reset the x.
+        y += word_height
 
 
 def start():
@@ -96,7 +127,7 @@ def screen(chapter_name, img_, text, sprt='', bg=img.bg_2):
     time.sleep(1)
 
 
-def screen_new(chapter_name, img_, text, sprt=''):
+def screen_new(chapter_name, img_, text, sprt='', sprt_x=100):
     run = True
     while run:
         pygame.time.delay(10)
@@ -113,7 +144,7 @@ def screen_new(chapter_name, img_, text, sprt=''):
 
         draw_img(0, 0, img_)
         if sprt:
-            draw_img(100, 0, sprt)
+            draw_img(sprt_x, 0, sprt)
 
         greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
         pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
