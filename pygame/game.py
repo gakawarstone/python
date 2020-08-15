@@ -9,7 +9,7 @@ from chapter_sprite import sprite
 pygame.init()
 pygame.display.set_caption('GK')
 
-sprite()
 dio.dio()
+sprite()
 
 pygame.quit()
