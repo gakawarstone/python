@@ -25,7 +25,11 @@ def moving():
         x += speed
 
 
-def draw_img(x, y, img):
+def draw_img(x, y, img, a=0):
+    if a != 0:
+        img = pygame.Surface((x, y), pygame.SRCALPHA)
+        img.set_colorkey(cl.black)
+        img.set_alpha(a)
     c.win.blit(img, (x, y))
 
 
@@ -88,5 +92,33 @@ def screen(chapter_name, img_, text, sprt='', bg=img.bg_2):
         gm_print('SAVE', 30, (210, 450))
         pygame.draw.rect(c.win, cl.black, (320, 440, 170, 50), 1)
         gm_print('NEXT', 30, (370, 450))
+        pygame.display.update()
+    time.sleep(1)
+
+
+def screen_new(chapter_name, img_, text, sprt=''):
+    run = True
+    while run:
+        pygame.time.delay(10)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_c]:
+            splash()
+        if keys[pygame.K_d]:
+            run = False
+
+        draw_img(0, 0, img_)
+        if sprt:
+            draw_img(100, 0, sprt)
+
+        greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
+        pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
+        c.win.blit(greay_rect, (0, 400))
+        gm_print(text, 15, (5, 402), cl.green)
+
         pygame.display.update()
     time.sleep(1)
