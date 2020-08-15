@@ -53,12 +53,12 @@ def start():
         c.win.fill(cl.dark_white)
         draw_img(0, 0, img.start_bg)
         gm_print('Welcome', 50, (150, 150), cl.dark_rose)
-        gm_print('Press space to continue...', 30, (100, 400), cl.dark_rose)
+        gm_print('Press space to continue...', 30, (85, 400), cl.dark_rose)
         pygame.display.update()
     time.sleep(1)
 
 
-def screen(chapter_name, img, text, sprt=''):
+def screen(chapter_name, img_, text, sprt='', bg=img.bg_2):
     run = True
     while run:
         pygame.time.delay(10)
@@ -74,9 +74,10 @@ def screen(chapter_name, img, text, sprt=''):
             run = False
 
         c.win.fill(cl.dark_white)
+        draw_img(0, 0, bg)
         gm_print('Chapter: ' + chapter_name, 30, (10, 10))
         gm_print(text, 15, (12, 332))
-        draw_img(10, 50, img)
+        draw_img(10, 50, img_)
         if sprt:
             draw_img(200, 50, sprt)
         pygame.draw.rect(c.win, cl.black, (10, 330, 480, 100), 1)
