@@ -13,22 +13,46 @@ speed_x = 1
 speed_y = 1
 
 
-def blit_text(surface, text, pos, font, color=pygame.Color('black')):
-    words = [word.split(' ') for word in text.splitlines()]  # 2D array where each row is a list of words.
-    space = font.size(' ')[0]  # The width of a space.
-    max_width, max_height = surface.get_size()
-    x, y = pos
-    for line in words:
-        for word in line:
-            word_surface = font.render(word, 0, color)
-            word_width, word_height = word_surface.get_size()
-            if x + word_width >= max_width:
-                x = pos[0]  # Reset the x.
-                y += word_height  # Start on new row.
-            surface.blit(word_surface, (x, y))
-            x += word_width + space
-        x = pos[0]  # Reset the x.
-        y += word_height  # Start on new row.
+def choose_2(img_, ch_1, ch_2, sprt='', sprt_x=100):
+    ch = 0
+    while ch == 0:
+        pygame.time.delay(10)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_c]:
+            splash()
+        if keys[pygame.K_q]:
+            ch = 1
+        if keys[pygame.K_e]:
+            ch = 2
+
+        draw_img(0, 0, img_)
+        if sprt:
+            draw_img(sprt_x, 0, sprt)
+
+        greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
+        pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
+        c.win.blit(greay_rect, (0, 400))
+
+        blue_rect = pygame.Surface((250, 100), pygame.SRCALPHA)
+        pygame.draw.rect(blue_rect, cl.blue_a, blue_rect.get_rect())
+        c.win.blit(blue_rect, (0, 400))
+
+        red_rect = pygame.Surface((250, 100), pygame.SRCALPHA)
+        pygame.draw.rect(red_rect, cl.red_a, red_rect.get_rect())
+        c.win.blit(red_rect, (250, 400))
+
+        gm_print(ch_1, 15, (5, 402), cl.green)
+        gm_print(ch_2, 15, (255, 402), cl.green)
+        gm_print('PRESS Q', 10, (5, 485), cl.green)
+        gm_print('PRESS E', 10, (450, 485), cl.green, c.win_width)
+        pygame.display.update()
+    time.sleep(1)
+    return ch
 
 
 def moving():
@@ -51,11 +75,10 @@ def draw_img(x, y, img, a=0):
     c.win.blit(img, (x, y))
 
 
-def gm_print(str, size, pos, color=cl.black):
+def gm_print(str, size, pos, color=cl.black, max_width=c.win_width - 10):
     f = pygame.font.SysFont('arial', size)
     words = [word.split(' ') for word in str.splitlines()]
     space = f.size(' ')[0]  # The width of a space.
-    max_width = c.win_width - 10
     x, y = pos
     for line in words:
         for word in line:
