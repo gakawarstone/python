@@ -12,3 +12,4 @@ splash_speed_x = 1
 splash_speed_y = 1
 # chapter config
 cnt = 0
+save = []
