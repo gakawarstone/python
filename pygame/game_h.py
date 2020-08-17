@@ -75,7 +75,7 @@ def draw_img(x, y, img, a=0):
     c.win.blit(img, (x, y))
 
 
-def gm_print(str, size, pos, color=cl.black, max_width=c.win_width - 10):
+def gm_print(str, size, pos, color=cl.black, max_width=c.win_width - 5):
     f = pygame.font.SysFont('arial', size)
     words = [word.split(' ') for word in str.splitlines()]
     space = f.size(' ')[0]  # The width of a space.
@@ -150,7 +150,7 @@ def screen(chapter_name, img_, text, sprt='', bg=img.bg_2):
     time.sleep(1)
 
 
-def screen_new(chapter_name, img_, text, sprt='', sprt_x=100):
+def frame(img_, text, sprt='', sprt_x=100):
     run = True
     while run:
         pygame.time.delay(10)
