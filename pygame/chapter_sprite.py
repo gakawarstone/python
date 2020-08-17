@@ -15,8 +15,17 @@ def sprite():
     game.screen_new(chapter_name, img.school500, text.down_2, img.down_2)
     game.screen_new(chapter_name, img.school500, text.down_3, img.down_2)
     game.screen_new(chapter_name, img.school500, text.down_4, img.down_3)
-    ch = game.choose_2(img.school500, 'вариант А', 'вариант В')
+    game.screen_new(chapter_name, img.school500, text.grant_1, img.down_2)
+    ch = game.choose_2(img.school500, text.grant_all, text.grant_mi6)
     if ch == 1:
-        game.screen_new(chapter_name, img.school500, 'Ты выбрал вариант А', img.sprite500)
+        all_()
     if ch == 2:
-        game.screen_new(chapter_name, img.school500, 'Ты выбрал вариант В', img.sprite500)
+        mi6gun()
+
+
+def all_():
+    game.screen_new(chapter_name, img.school500, text.grant_t, img.down_2)
+
+
+def mi6gun():
+    game.screen_new(chapter_name, img.school500, text.grant_f, img.down_3)
