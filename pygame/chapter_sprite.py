@@ -16,11 +16,11 @@ def sprite():
     game.screen_new(chapter_name, img.school500, text.down_3, img.down_2)
     game.screen_new(chapter_name, img.school500, text.down_4, img.down_3)
     game.screen_new(chapter_name, img.school500, text.grant_1, img.down_2)
-    ch = game.choose_2(img.school500, text.grant_all, text.grant_mi6)
+    ch = game.choose_2(img.school500, text.grant_mi6, text.grant_all)
     if ch == 1:
-        all_()
-    if ch == 2:
         mi6gun()
+    if ch == 2:
+        all_()
 
 
 def all_():

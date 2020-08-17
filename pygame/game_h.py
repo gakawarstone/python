@@ -75,7 +75,7 @@ def draw_img(x, y, img, a=0):
     c.win.blit(img, (x, y))
 
 
-def gm_print(str, size, pos, color=cl.black, max_width=c.win_width - 10):
+def gm_print(str, size, pos, color=cl.black, max_width=c.win_width - 5):
     f = pygame.font.SysFont('arial', size)
     words = [word.split(' ') for word in str.splitlines()]
     space = f.size(' ')[0]  # The width of a space.
