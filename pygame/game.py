@@ -10,5 +10,7 @@ pygame.init()
 pygame.display.set_caption('GK')
 
 sprite()
+dio.dio()
+dio.dio_new()
 
 pygame.quit()
