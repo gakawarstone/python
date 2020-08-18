@@ -20,7 +20,8 @@ def choose_2(img_, ch_1, ch_2, sprt='', sprt_x=100):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                pygame.quit()
+                quit()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
@@ -100,7 +101,8 @@ def start():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                pygame.quit()
+                quit()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
@@ -157,7 +159,8 @@ def frame(img_, text, sprt='', sprt_x=100):
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                pygame.quit()
+                quit()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
