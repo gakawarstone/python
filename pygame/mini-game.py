@@ -55,7 +55,7 @@ class Cube:
 
 
 def main():
-    player = Player(10, 10)
+    player = Player(20, 20)
     cube_1 = Cube(100)
     cube_2 = Cube(200)
     cube_3 = Cube(300)
