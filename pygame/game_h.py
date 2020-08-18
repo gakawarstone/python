@@ -13,15 +13,19 @@ speed_x = 1
 speed_y = 1
 
 
+def if_close():
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            quit()
+
+
 def choose_2(img_, ch_1, ch_2, sprt='', sprt_x=100):
     ch = 0
     while ch == 0:
         pygame.time.delay(10)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+        if_close()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
@@ -56,7 +60,7 @@ def choose_2(img_, ch_1, ch_2, sprt='', sprt_x=100):
     return ch
 
 
-def moving():
+def moving(x, y):
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w] and y > 0:
         y -= speed
@@ -66,6 +70,7 @@ def moving():
         x -= speed
     if keys[pygame.K_d] and x < c.win_height - height:
         x += speed
+    return x, y
 
 
 def draw_img(x, y, img, a=0):
@@ -99,10 +104,7 @@ def start():
     while run:
         pygame.time.delay(10)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+        if_close()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
@@ -123,9 +125,7 @@ def screen(chapter_name, img_, text, sprt='', bg=img.bg_2):
     while run:
         pygame.time.delay(10)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                run = False
+        if_close()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
@@ -157,10 +157,7 @@ def frame(img_, text, sprt='', sprt_x=100):
     while run:
         pygame.time.delay(10)
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
+        if_close()
 
         keys = pygame.key.get_pressed()
         if keys[pygame.K_c]:
