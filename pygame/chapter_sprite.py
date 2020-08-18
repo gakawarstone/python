@@ -8,9 +8,8 @@ import text
 chapter_name = 'SPRITE'
 
 
-def sprite():
+def grant():
     game.start()
-    game.frame(img.school500, 'Я спрайт', img.sprite500)
     game.frame(img.school500, text.down_1, img.down_1, -30)
     game.frame(img.school500, text.down_2, img.down_2)
     game.frame(img.school500, text.down_3, img.down_2)
