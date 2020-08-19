@@ -73,7 +73,7 @@ def lever(cubes, n):
         game.if_close()
 
         cubes_draw(cubes, player)
-        game.gm_print("LEVER " + str(n), 30, (5, 460), cl.green)
+        game.gm_print("LEVEL " + str(n), 30, (5, 460), cl.green)
         player.move()
         player.draw()
 
