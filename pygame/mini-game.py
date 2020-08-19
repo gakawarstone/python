@@ -1,12 +1,7 @@
 import pygame
-import random
-from splash import splash
 import config as c
 import color as cl
 import game_h as game
-import img
-import chapter_dio as dio
-from chapter_sprite import grant
 pygame.init()
 pygame.display.set_caption('GK')
 
@@ -14,6 +9,7 @@ pygame.display.set_caption('GK')
 def cubes():
 
     return
+
 
 class Player:
     x = 20
@@ -28,7 +24,7 @@ class Player:
 
     def draw(self):
         rect = (self.x, self.y, self.width, self.height)
-        pygame.draw.rect(c.win, cl.random(), rect)
+        pygame.draw.rect(c.win, cl.blue, rect)
 
 
 class Cube:
@@ -52,7 +48,7 @@ class Cube:
 
     def draw(self):
         rect = (self.x, self.y, self.width, self.height)
-        pygame.draw.rect(c.win, cl.random(), rect)
+        pygame.draw.rect(c.win, cl.red, rect)
 
 
 def main():

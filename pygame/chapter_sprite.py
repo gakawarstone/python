@@ -1,7 +1,3 @@
-import pygame
-from splash import splash
-import config as c
-import color as cl
 import game_h as game
 import img
 import text
