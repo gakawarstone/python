@@ -22,8 +22,7 @@ def cubes_draw(cubes, player):
         cubes[cube].draw()
         touch = game.check_touch(player, cubes[cube])
         if touch:
-            pygame.quit()
-            quit()
+            main()
 
 
 def win():
