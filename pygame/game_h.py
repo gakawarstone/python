@@ -4,13 +4,16 @@ import config as c
 import color as cl
 import img
 import time
-x = 23
-y = 78
-width = 70
-height = 30
-speed = 1
-speed_x = 1
-speed_y = 1
+
+
+def check_touch(obj_1, obj_2):
+    if obj_1.x >= obj_2.x and obj_1.x <= obj_2.x + obj_2.width:
+        if obj_1.y >= obj_2.y and obj_1.y <= obj_2.y + obj_2.height:
+            return True
+    if obj_2.x >= obj_1.x and obj_2.x <= obj_1.x + obj_1.width:
+        if obj_2.y >= obj_1.y and obj_2.y <= obj_1.y + obj_1.height:
+            return True
+    return False
 
 
 def if_close():
@@ -60,15 +63,15 @@ def choose_2(img_, ch_1, ch_2, sprt='', sprt_x=100):
     return ch
 
 
-def moving(x, y):
+def moving(obj, x, y, speed=1):
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w] and y > 0:
         y -= speed
-    if keys[pygame.K_s] and y < c.win_width - width:
+    if keys[pygame.K_s] and y < c.win_width - obj.width:
         y += speed
     if keys[pygame.K_a] and x > 0:
         x -= speed
-    if keys[pygame.K_d] and x < c.win_height - height:
+    if keys[pygame.K_d] and x < c.win_height - obj.height:
         x += speed
     return x, y
 

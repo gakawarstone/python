@@ -6,20 +6,25 @@ import color as cl
 import game_h as game
 import img
 import chapter_dio as dio
-from chapter_sprite import sprite
+from chapter_sprite import grant
 pygame.init()
 pygame.display.set_caption('GK')
 
 
+def cubes():
+
+    return
+
 class Player:
+    x = 20
+    y = 20
+
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.x = 20
-        self.y = 20
 
     def move(self):
-        self.x, self.y = game.moving(self.x, self.y)
+        self.x, self.y = game.moving(self, self.x, self.y)
 
     def draw(self):
         rect = (self.x, self.y, self.width, self.height)
@@ -27,27 +32,23 @@ class Player:
 
 
 class Cube:
+    @classmethod
+    def death(cls):
+        print(cls.width)
+
     def __init__(self, x):
-        self.width = 20
-        self.height = 20
         self.x = x
         self.y = 0
         self.speed = 2
+        self.width = 20
+        self.height = 20
 
     def move(self):
         self.y += self.speed
-        if self.speed == 0:
-            self.speed = 1
-        if self.speed >= 2:
-            self.speed == 2
-        if self.speed <= -2:
-            self.speed == -2
         if self.y >= c.win_height - self.height - 1:
             self.speed = -self.speed
-            self.speed += random.randint(-1, 1)
         if self.y <= 1:
             self.speed = -self.speed
-            self.speed += random.randint(-1, 1)
 
     def draw(self):
         rect = (self.x, self.y, self.width, self.height)
@@ -63,7 +64,7 @@ def main():
     run = True
     while run:
         pygame.time.delay(10)
-
+        c.win.fill(cl.black)
         game.if_close()
 
         player.move()
@@ -71,14 +72,20 @@ def main():
         cube_2.move()
         cube_3.move()
         cube_4.move()
-        print(player.x, player.y)
 
-        c.win.fill(cl.black)
-        player.draw()
         cube_1.draw()
         cube_2.draw()
         cube_3.draw()
         cube_4.draw()
+        player.draw()
+
+        touch_1 = game.check_touch(player, cube_1)
+        touch_2 = game.check_touch(player, cube_2)
+        touch_3 = game.check_touch(player, cube_3)
+        touch_4 = game.check_touch(player, cube_4)
+        if touch_1 or touch_2 or touch_3 or touch_4:
+            pygame.quit()
+            quit()
         pygame.display.update()
 
 
