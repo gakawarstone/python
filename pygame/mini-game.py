@@ -6,9 +6,21 @@ pygame.init()
 pygame.display.set_caption('GK')
 
 
-def cubes():
+def cubes_init(x_list, player):
+    cubes = {}
+    for x in x_list:
+        cubes[x] = Cube(x)
+    return cubes
 
-    return
+
+def cubes_draw(cubes, player):
+    for cube in cubes:
+        cubes[cube].move()
+        cubes[cube].draw()
+        touch = game.check_touch(player, cubes[cube])
+        if touch:
+            pygame.quit()
+            quit()
 
 
 class Player:
@@ -53,35 +65,17 @@ class Cube:
 
 def main():
     player = Player(20, 20)
-    cube_1 = Cube(100)
-    cube_2 = Cube(200)
-    cube_3 = Cube(300)
-    cube_4 = Cube(400)
+    cubes = cubes_init([100, 200, 300, 400], player)
     run = True
     while run:
         pygame.time.delay(10)
         c.win.fill(cl.black)
         game.if_close()
 
+        cubes_draw(cubes, player)
         player.move()
-        cube_1.move()
-        cube_2.move()
-        cube_3.move()
-        cube_4.move()
-
-        cube_1.draw()
-        cube_2.draw()
-        cube_3.draw()
-        cube_4.draw()
         player.draw()
 
-        touch_1 = game.check_touch(player, cube_1)
-        touch_2 = game.check_touch(player, cube_2)
-        touch_3 = game.check_touch(player, cube_3)
-        touch_4 = game.check_touch(player, cube_4)
-        if touch_1 or touch_2 or touch_3 or touch_4:
-            pygame.quit()
-            quit()
         pygame.display.update()
 
 
