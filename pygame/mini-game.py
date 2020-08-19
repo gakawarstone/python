@@ -6,7 +6,7 @@ pygame.init()
 pygame.display.set_caption('GK')
 
 
-def cubes_init(x_list, player):
+def cubes_init(x_list):
     cubes = {}
     for x in x_list:
         cubes[x] = Cube(x)
@@ -65,7 +65,7 @@ class Cube:
 
 def main():
     player = Player(20, 20)
-    cubes = cubes_init([100, 200, 300, 400], player)
+    cubes = cubes_init([100, 200, 300, 400])
     run = True
     while run:
         pygame.time.delay(10)
