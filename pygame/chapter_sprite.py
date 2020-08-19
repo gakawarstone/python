@@ -23,4 +23,4 @@ def all_():
 
 
 def mi6gun():
-    game.frame(img.school500, text.grant_f, img.down_3)
+    game.frame(img.school500, text.grant_f, img.sprite500)
