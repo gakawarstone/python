@@ -79,12 +79,13 @@ def main():
         c.win.fill(cl.black)
         game.if_close()
 
-        if player.x + player.width >= c.win_width:
-            win()
-
         cubes_draw(cubes, player)
         player.move()
         player.draw()
+
+        if player.x + player.width >= c.win_width:
+            run = False
+            win()
 
         pygame.display.update()
 
