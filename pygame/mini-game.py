@@ -55,10 +55,12 @@ class Cube:
 
     def move(self):
         self.y += self.speed
-        if self.y >= c.win_height - self.height - 1:
+        """if self.y >= c.win_height - self.height - 1:
             self.speed = -self.speed
         if self.y <= 1:
-            self.speed = -self.speed
+            self.speed = -self.speed"""
+        if self.y >= c.win_height:
+            self.y = 0
 
     def draw(self):
         #        rect = (self.x, self.y, self.width, self.height)
@@ -76,7 +78,7 @@ def lever(cubes, n):
         game.if_close()
 
         cubes_draw(cubes, player)
-        game.gm_print("LEVEL " + str(n), 30, (5, 460), cl.green)
+        game.gm_print("LEVEL " + str(n), 30, (5, 460), cl.red)
         player.move()
         player.draw()
 
@@ -145,6 +147,7 @@ def main():
     return
 
 
+game.start()
 main()
 
 pygame.quit()
