@@ -37,8 +37,9 @@ class Player:
         self.x, self.y = game.moving(self, self.x, self.y)
 
     def draw(self):
-        rect = (self.x, self.y, self.width, self.height)
-        pygame.draw.rect(c.win, cl.blue, rect)
+        #   rect = (self.x, self.y, self.width, self.height)
+        #   pygame.draw.rect(c.win, cl.blue, rect)
+        game.draw_img(self.x, self.y, img.fire)
 
 
 class Cube:
