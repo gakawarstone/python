@@ -25,3 +25,4 @@ real_dio500 = pygame.image.load('img/real_dio500.jpg')
 
 # mini game at mini-game.py
 barrel = pygame.image.load('img/barrel.png')
+mg_bg = pygame.image.load('img/mg-bg.png')

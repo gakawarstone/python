@@ -72,6 +72,7 @@ def lever(cubes, n):
     while run:
         pygame.time.delay(10)
         c.win.fill(cl.black)
+        game.draw_img(0, 0, img.mg_bg)
         game.if_close()
 
         cubes_draw(cubes, player)
