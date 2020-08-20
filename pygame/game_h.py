@@ -117,6 +117,7 @@ def start():
 
         c.win.fill(cl.dark_white)
         draw_img(0, 0, img.start_bg)
+        draw_img(85, 200, img.mylogo)
         gm_print('Welcome', 50, (150, 150), cl.dark_rose)
         gm_print('Press space to continue...', 30, (85, 400), cl.dark_rose)
         pygame.display.update()

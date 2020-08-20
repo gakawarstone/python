@@ -1,4 +1,5 @@
 import pygame
+import time
 import config as c
 import color as cl
 import game_h as game
@@ -60,8 +61,9 @@ class Cube:
             self.speed = -self.speed
 
     def draw(self):
-        rect = (self.x, self.y, self.width, self.height)
-        pygame.draw.rect(c.win, cl.red, rect)
+        #        rect = (self.x, self.y, self.width, self.height)
+        #        pygame.draw.rect(c.win, cl.red, rect)
+        game.draw_img(self.x, self.y, img.barrel)
 
 
 def lever(cubes, n):
@@ -127,14 +129,18 @@ def lever_6():
 
 
 def main():
-    lever_1()
-    lever_2()
-    lever_3()
-    lever_4()
-    lever_5()
-    lever_6()
-    game.frame(img.jojo500, "Поздравляю ДИО!")
-    pygame.quit()
+    if not c.game_win:
+        lever_1()
+        lever_2()
+        lever_3()
+        lever_4()
+        lever_5()
+        lever_6()
+        c.game_win = True
+        if c.game_win:
+            time.sleep(1)
+            game.frame(img.jojo500, "Поздравляю ДИО!")
+
     return
 
 

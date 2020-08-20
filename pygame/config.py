@@ -13,3 +13,5 @@ splash_speed_y = 1
 # chapter config
 cnt = 0
 save = []
+# mini-game config
+game_win = False

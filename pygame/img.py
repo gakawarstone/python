@@ -22,3 +22,6 @@ down_3 = pygame.image.load('img/down_3.png')
 jojo500 = pygame.image.load('img/jojo500.jpg')
 dio500 = pygame.image.load('img/dio500.jpg')
 real_dio500 = pygame.image.load('img/real_dio500.jpg')
+
+# mini game at mini-game.py
+barrel = pygame.image.load('img/barrel.png')
