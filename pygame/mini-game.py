@@ -144,8 +144,8 @@ def main():
         if c.game_win:
             time.sleep(1)
             game.frame(img.jojo500, "Поздравляю ДИО!")
-
-    return
+            pygame.quit()
+            quit()
 
 
 game.start()
