@@ -6,6 +6,34 @@ import img
 import time
 
 
+def dream(img_, text, sprt='', sprt_x=100):
+    run = True
+    while run:
+        pygame.time.delay(10)
+
+        if_close()
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_c]:
+            splash()
+        if keys[pygame.K_d]:
+            run = False
+
+        draw_img(0, 0, img_)
+        if sprt:
+            draw_img(sprt_x, 0, sprt)
+
+        greay_rect = pygame.Surface((500, 500), pygame.SRCALPHA)
+        pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
+        c.win.blit(greay_rect, (0, 0))
+        y = 2
+        for line in text:
+            y = gm_print('~ ' + line, 15, (5, y), cl.green)
+
+        pygame.display.update()
+    time.sleep(1)
+
+
 def check_touch(obj_1, obj_2):
     if obj_1.x >= obj_2.x and obj_1.x <= obj_2.x + obj_2.width:
         if obj_1.y >= obj_2.y and obj_1.y <= obj_2.y + obj_2.height:
@@ -100,6 +128,7 @@ def gm_print(str, size, pos, color=cl.black, max_width=c.win_width - 5):
             x += word_width + space
         x = pos[0]  # Reset the x.
         y += word_height
+    return y
 
 
 def start():
