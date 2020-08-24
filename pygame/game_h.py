@@ -4,6 +4,28 @@ import config as c
 import color as cl
 import img
 import time
+from buttons import Button
+
+
+def btn():
+    run = True
+    while run:
+        pygame.time.delay(10)
+
+        if_close()
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_c]:
+            splash()
+        if keys[pygame.K_d]:
+            run = False
+
+        c.win.fill(cl.white)
+        star = Button((0, 0), (100, 100))
+        star.hover()
+
+        pygame.display.update()
+    time.sleep(1)
 
 
 def dream(img_, text, sprt='', sprt_x=100):
