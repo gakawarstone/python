@@ -27,6 +27,7 @@ def btn():
             run = False
 
         pygame.display.update()
+    time.sleep(0.5)
 
 
 def dream(img_, text, sprt='', sprt_x=100):
@@ -202,8 +203,12 @@ def screen(chapter_name, img_, text, sprt='', bg=img.bg_2):
         gm_print('PREVIOS', 30, (27, 450))
         pygame.draw.rect(c.win, cl.black, (190, 440, 120, 50), 1)
         gm_print('SAVE', 30, (210, 450))
+        next = Button((320, 440), (170, 50))
+        next.hover()
         pygame.draw.rect(c.win, cl.black, (320, 440, 170, 50), 1)
         gm_print('NEXT', 30, (370, 450))
+        if next.click():
+            run = False
         pygame.display.update()
     time.sleep(1)
 

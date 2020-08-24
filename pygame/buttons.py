@@ -23,7 +23,7 @@ class Button():
         mouse.get_pos()
         if game.check_touch(self, mouse):
             rect = (self.x, self.y, self.width, self.height)
-            pygame.draw.rect(c.win, cl.greay, rect)
+            pygame.draw.rect(c.win, cl.dark_hover, rect)
 
     def click(self):
         mouse = Mouse()
