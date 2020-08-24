@@ -25,5 +25,10 @@ class Button():
             rect = (self.x, self.y, self.width, self.height)
             pygame.draw.rect(c.win, cl.greay, rect)
 
-    def click():
-        return
+    def click(self):
+        mouse = Mouse()
+        mouse.get_pos()
+        if game.check_touch(self, mouse):
+            if pygame.mouse.get_pressed()[0]:
+                return True
+        return False

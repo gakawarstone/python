@@ -23,9 +23,10 @@ def btn():
         c.win.fill(cl.white)
         star = Button((0, 0), (100, 100))
         star.hover()
+        if star.click():
+            run = False
 
         pygame.display.update()
-    time.sleep(1)
 
 
 def dream(img_, text, sprt='', sprt_x=100):
