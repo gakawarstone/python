@@ -7,6 +7,22 @@ import time
 from buttons import Button
 
 
+def menu():
+    run = True
+    while run:
+        pygame.time.delay(10)
+        c.win.fill(cl.white)
+
+        if_close()
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_c]:
+            splash()
+
+        pygame.display.update()
+    time.sleep(1)
+
+
 def btn():
     run = True
     while run:

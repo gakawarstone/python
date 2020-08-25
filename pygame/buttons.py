@@ -18,12 +18,12 @@ class Button():
         self.x, self.y = pos
         self.width, self.height = size
 
-    def hover(self):
+    def hover(self, color=cl.dark_hover):
         mouse = Mouse()
         mouse.get_pos()
         if game.check_touch(self, mouse):
             rect = (self.x, self.y, self.width, self.height)
-            pygame.draw.rect(c.win, cl.dark_hover, rect)
+            pygame.draw.rect(c.win, color, rect)
 
     def click(self):
         mouse = Mouse()
@@ -32,3 +32,7 @@ class Button():
             if pygame.mouse.get_pressed()[0]:
                 return True
         return False
+
+    def draw(self, color=cl.black):
+        rect = (self.x, self.y, self.width, self.height)
+        pygame.draw.rect(c.win, color, rect, 1)
