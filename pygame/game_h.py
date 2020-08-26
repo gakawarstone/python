@@ -265,3 +265,22 @@ def frame(img_, text, sprt='', sprt_x=100):
 
         pygame.display.update()
     time.sleep(1)
+
+
+class Frame:
+    id = 0
+    id_list = []
+
+    def __init__(self):
+        self.background = None
+        self.text = None
+        self.uid = Frame.id
+        Frame.id_list.append(self)
+        Frame.id += 1
+
+    class Sprite:
+        x = 100
+        y = 0
+
+        def __init__(self, img_):
+            self.img = img_
