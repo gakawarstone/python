@@ -69,7 +69,7 @@ class Cube:
         game.draw_img(self.x, self.y, img.barrel)
 
 
-def lever(cubes, n):
+def level(cubes, n):
     player = Player(20, 20)
     run = True
     while run:
@@ -90,56 +90,56 @@ def lever(cubes, n):
     return
 
 
-def lever_1():
+def level_1():
     cubes = cubes_init([(250, 50)])
-    lever(cubes, 1)
+    level(cubes, 1)
 
 
-def lever_2():
+def level_2():
     cubes = cubes_init([(100, 100), (400, 100)])
-    lever(cubes, 2)
+    level(cubes, 2)
 
 
-def lever_3():
+def level_3():
     cubes = cubes_init([(250, 0),
                         (150, 50), (350, 50),
                         (250, 100)])
-    lever(cubes, 3)
+    level(cubes, 3)
 
 
-def lever_4():
+def level_4():
     cubes = cubes_init([(150, 100), (250, 100), (350, 100),
                         (100, 150), (200, 150), (300, 150), (400, 150),
                         (150, 200), (250, 200), (350, 200)])
-    lever(cubes, 4)
+    level(cubes, 4)
 
 
-def lever_5():
+def level_5():
     cubes = cubes_init([(250, 0),
                         (150, 50), (350, 50),
                         (100, 100), (200, 100), (300, 100),
                         (150, 150), (350, 150),
                         (250, 200)])
-    lever(cubes, 5)
+    level(cubes, 5)
 
 
-def lever_6():
+def level_6():
     cubes = cubes_init([(150, 100), (250, 100), (350, 100),
                         (100, 150), (200, 150), (300, 150), (400, 150),
                         (150, 200), (250, 200), (350, 200),
                         (100, 250), (200, 250), (300, 250), (400, 250),
                         (150, 300), (250, 300), (350, 300)])
-    lever(cubes, 6)
+    level(cubes, 6)
 
 
 def main():
     if not c.game_win:
-        lever_1()
-        lever_2()
-        lever_3()
-        lever_4()
-        lever_5()
-        lever_6()
+        level_1()
+        level_2()
+        level_3()
+        level_4()
+        level_5()
+        level_6()
         c.game_win = True
         if c.game_win:
             time.sleep(1)
@@ -150,5 +150,4 @@ def main():
 
 game.start()
 main()
-
 pygame.quit()
