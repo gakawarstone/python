@@ -110,6 +110,14 @@ def choose_2(img_, ch_1, ch_2, sprt='', sprt_x=100):
         if sprt:
             draw_img(sprt_x, 0, sprt)
 
+        blue_button = Button((0, 400), (250, 100))
+        if blue_button.click():
+            ch = 1
+
+        red_button = Button((250, 400), (250, 100))
+        if red_button.click():
+            ch = 2
+
         greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
         pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
         c.win.blit(greay_rect, (0, 400))
@@ -240,6 +248,10 @@ def frame(img_, text, sprt='', sprt_x=100):
         if keys[pygame.K_c]:
             splash()
         if keys[pygame.K_d]:
+            run = False
+
+        next = Button((0, 0), (c.win_width, c.win_height))
+        if next.click():
             run = False
 
         draw_img(0, 0, img_)
