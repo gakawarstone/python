@@ -237,42 +237,12 @@ def screen(chapter_name, img_, text, sprt='', bg=img.bg_2):
     time.sleep(1)
 
 
-def frame(img_, text, sprt='', sprt_x=100):
-    run = True
-    while run:
-        pygame.time.delay(10)
-
-        if_close()
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_c]:
-            splash()
-        if keys[pygame.K_d]:
-            run = False
-
-        next = Button((0, 0), (c.win_width, c.win_height))
-        if next.click():
-            run = False
-
-        draw_img(0, 0, img_)
-        if sprt:
-            draw_img(sprt_x, 0, sprt)
-
-        greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
-        pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
-        c.win.blit(greay_rect, (0, 400))
-        gm_print(text, 15, (5, 402), cl.green)
-
-        pygame.display.update()
-    time.sleep(1)
-
-
-def frame_(img_, text, sprt_=None, sprt_x=None):
+def frame(img_, text, sprt_=None, sprt_x=None):
     gf = Frame()
     gf.background = img_
     gf.text = text
     if sprt_:
-        gf.sprite = gf.Sprite(sprt_)
+        gf.sprite = Frame.Sprite(sprt_)
         if sprt_x:
             gf.sprite.x = sprt_x
     gf.show()
@@ -298,11 +268,14 @@ class Frame:
         Frame.id_list.append(self)
         Frame.id += 1
 
-        class Sprite:
-            def __init__(self, img_):
-                self.img = img_
-                self.x = 100
-                self.y = 0
+    class Sprite:
+        def __init__(self, img_):
+            self.img = img_
+            self.x = 100
+            self.y = 0
+
+        def show(self):
+            draw_img(self.x, self.y, self.img)
 
     def show(self):
         run = True
