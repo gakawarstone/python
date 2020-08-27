@@ -292,7 +292,7 @@ class Frame:
     def __init__(self):
         self.background = None
         self.text = None
-        self.sprite = self.Sprite()
+        self.sprite = None
 
         self.uid = Frame.id
         Frame.id_list.append(self)
@@ -322,7 +322,7 @@ class Frame:
                 run = False
 
             draw_img(0, 0, self.background)
-            if self.sprite.img is not None:
+            if self.sprite:
                 self.sprite.show()
 
             greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)

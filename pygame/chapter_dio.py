@@ -19,3 +19,12 @@ def dio_new():
     game.frame(img.jojo500, 'Я сказал настоящего')
     game.frame(img.real_dio500, '...')
     game.frame(img.jojo500, 'Превосходно')
+
+
+def dio_new_():
+    game.start()
+    game.frame_(img.jojo500, 'Покажите мне Дио')
+    game.frame_(img.dio500, '...')
+    game.frame_(img.jojo500, 'Я сказал настоящего')
+    game.frame_(img.real_dio500, '...')
+    game.frame_(img.jojo500, 'Превосходно')
