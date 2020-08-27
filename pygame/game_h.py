@@ -272,7 +272,7 @@ class Frame:
     id_list = []
 
     @classmethod
-    def get_from_id(uid):
+    def get_from_id(self, uid):
         try:
             return Frame.id_list[uid]
         except Exception:
