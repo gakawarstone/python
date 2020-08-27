@@ -271,6 +271,13 @@ class Frame:
     id = 0
     id_list = []
 
+    @classmethod
+    def get_from_id(uid):
+        try:
+            return Frame.id_list[uid]
+        except Exception:
+            return False
+
     def __init__(self):
         self.background = None
         self.text = None
@@ -278,9 +285,8 @@ class Frame:
         Frame.id_list.append(self)
         Frame.id += 1
 
-    class Sprite:
-        x = 100
-        y = 0
-
-        def __init__(self, img_):
-            self.img = img_
+        class Sprite:
+            def __init__(self, img_):
+                self.img = img_
+                self.x = 100
+                self.y = 0
