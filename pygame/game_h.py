@@ -259,15 +259,6 @@ class Frame:
         except Exception:
             return False
 
-    def __init__(self):
-        self.background = None
-        self.text = None
-        self.sprite = None
-
-        self.uid = Frame.id
-        Frame.id_list.append(self)
-        Frame.id += 1
-
     class Sprite:
         def __init__(self, img_):
             self.img = img_
@@ -276,6 +267,15 @@ class Frame:
 
         def show(self):
             draw_img(self.x, self.y, self.img)
+
+    def __init__(self):
+        self.background = None
+        self.text = None
+        self.sprite = None
+
+        self.uid = Frame.id
+        Frame.id_list.append(self)
+        Frame.id += 1
 
     def show(self):
         run = True
