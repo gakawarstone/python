@@ -366,7 +366,7 @@ class Screen(Frame):
             gm_print('PREVIOS', 30, (27, 450))
             if previos.click() and self.uid != 0:
                 time.sleep(1)
-                Screen.get_from_id(self.uid - 1).show
+                Screen.get_from_id(self.uid - 1).show()
 
             pygame.draw.rect(c.win, cl.black, (190, 440, 120, 50), 1)
             gm_print('SAVE', 30, (210, 450))
