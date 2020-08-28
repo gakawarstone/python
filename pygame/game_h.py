@@ -248,6 +248,19 @@ def frame(img_, text, sprt_=None, sprt_x=None):
     gf.show()
 
 
+def screen_(chapter_name, img_, text, sprt_=None, bg=img.bg_2, sprt_x=100):
+    gf = Screen()
+    gf.background = bg
+    gf.text = text
+    gf.chapter_name = chapter_name
+    gf.img = img_
+    if sprt_:
+        gf.sprite = Screen.Sprite(sprt_)
+        if sprt_x:
+            gf.sprite.x = sprt_
+    gf.show()
+
+
 class Frame:
     id = 0
     id_list = []
@@ -306,5 +319,63 @@ class Frame:
             c.win.blit(greay_rect, (0, 400))
             gm_print(self.text, 15, (5, 402), cl.green)
 
+            pygame.display.update()
+        time.sleep(1)
+
+
+class Screen(Frame):
+    def __init__(self):
+        self.background = None
+        self.img = None
+        self.text = None
+        self.sprite = None
+        self.chapter_name = None
+
+        self.uid = Screen.id
+        Screen.id_list.append(self)
+        Screen.id += 1
+
+    def show(self):
+        run = True
+        while run:
+            pygame.time.delay(10)
+
+            if_close()
+
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_c]:
+                splash()
+            if keys[pygame.K_d]:
+                run = False
+            if keys[pygame.K_a] and self.uid != 0:
+                time.sleep(1)
+                Screen.get_from_id(self.uid - 1).show()
+
+            c.win.fill(cl.dark_white)
+            draw_img(0, 0, self.background)
+            gm_print('Chapter: ' + self.chapter_name, 30, (10, 10))
+            gm_print(self.text, 15, (12, 332))
+            draw_img(10, 50, self.img)
+            if self.sprite:
+                self.sprite.show()
+            pygame.draw.rect(c.win, cl.black, (10, 330, 480, 100), 1)
+
+            previos = Button((10, 440), (170, 50))
+            previos.hover()
+            pygame.draw.rect(c.win, cl.black, (10, 440, 170, 50), 1)
+            gm_print('PREVIOS', 30, (27, 450))
+            if previos.click() and self.uid != 0:
+                time.sleep(1)
+                Screen.get_from_id(self.uid - 1).show
+
+            pygame.draw.rect(c.win, cl.black, (190, 440, 120, 50), 1)
+            gm_print('SAVE', 30, (210, 450))
+
+            next = Button((320, 440), (170, 50))
+            next.hover()
+            pygame.draw.rect(c.win, cl.black, (320, 440, 170, 50), 1)
+            gm_print('NEXT', 30, (370, 450))
+            if next.click():
+                run = False
             pygame.display.update()
         time.sleep(1)

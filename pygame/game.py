@@ -8,6 +8,7 @@ pygame.init()
 pygame.display.set_caption('GK')
 
 # functions call
+dio.dio()
 dio.dio_new()
 grant()
 

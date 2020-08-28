@@ -5,11 +5,11 @@ chapter_name = 'DIO'
 
 def dio():
     game.start()
-    game.screen(chapter_name, img.jojo, 'Покажите мне Дио')
-    game.screen(chapter_name, img.dio, '...')
-    game.screen(chapter_name, img.jojo, 'Я сказал настоящего')
-    game.screen(chapter_name, img.real_dio, '...')
-    game.screen(chapter_name, img.jojo, 'Превосходно')
+    game.screen_(chapter_name, img.jojo, 'Покажите мне Дио')
+    game.screen_(chapter_name, img.dio, '...')
+    game.screen_(chapter_name, img.jojo, 'Я сказал настоящего')
+    game.screen_(chapter_name, img.real_dio, '...')
+    game.screen_(chapter_name, img.jojo, 'Превосходно')
 
 
 def dio_new():
