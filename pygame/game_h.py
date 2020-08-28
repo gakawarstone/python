@@ -309,6 +309,7 @@ class Screen(Frame):
             if_close()
 
             keys = pygame.key.get_pressed()
+            previos_pressed = previos.click() and self.uid != 0
             next_pressed = next.click()
             if keys[pygame.K_c]:
                 splash()
@@ -317,7 +318,7 @@ class Screen(Frame):
             if keys[pygame.K_a] and self.uid != 0:
                 time.sleep(1)
                 Screen.get_from_id(self.uid - 1).show()
-            if previos.click() and self.uid != 0:
+            if previos_pressed:
                 time.sleep(1)
                 Screen.get_from_id(self.uid - 1).show()
             if next_pressed:
