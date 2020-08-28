@@ -289,6 +289,9 @@ class Frame:
                 splash()
             if keys[pygame.K_d]:
                 run = False
+            if keys[pygame.K_a]:
+                time.sleep(1)
+                Frame.get_from_id(self.uid - 1).show()
 
             next = Button((0, 0), (c.win_width, c.win_height))
             if next.click():
