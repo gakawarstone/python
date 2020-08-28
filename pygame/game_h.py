@@ -301,12 +301,15 @@ class Screen(Frame):
 
     def show(self):
         run = True
+        previos = Button((10, 440), (170, 50))
+        next = Button((320, 440), (170, 50))
         while run:
             pygame.time.delay(10)
 
             if_close()
 
             keys = pygame.key.get_pressed()
+            next_pressed = next.click()
             if keys[pygame.K_c]:
                 splash()
             if keys[pygame.K_d]:
@@ -314,12 +317,10 @@ class Screen(Frame):
             if keys[pygame.K_a] and self.uid != 0:
                 time.sleep(1)
                 Screen.get_from_id(self.uid - 1).show()
-            previos = Button((10, 440), (170, 50))
             if previos.click() and self.uid != 0:
                 time.sleep(1)
                 Screen.get_from_id(self.uid - 1).show()
-            next = Button((320, 440), (170, 50))
-            if next.click():
+            if next_pressed:
                 run = False
 
             c.win.fill(cl.dark_white)
