@@ -314,6 +314,13 @@ class Screen(Frame):
             if keys[pygame.K_a] and self.uid != 0:
                 time.sleep(1)
                 Screen.get_from_id(self.uid - 1).show()
+            previos = Button((10, 440), (170, 50))
+            if previos.click() and self.uid != 0:
+                time.sleep(1)
+                Screen.get_from_id(self.uid - 1).show()
+            next = Button((320, 440), (170, 50))
+            if next.click():
+                run = False
 
             c.win.fill(cl.dark_white)
             draw_img(0, 0, self.background)
@@ -324,22 +331,16 @@ class Screen(Frame):
                 self.sprite.show()
             pygame.draw.rect(c.win, cl.black, (10, 330, 480, 100), 1)
 
-            previos = Button((10, 440), (170, 50))
             previos.hover()
             pygame.draw.rect(c.win, cl.black, (10, 440, 170, 50), 1)
             gm_print('PREVIOS', 30, (27, 450))
-            if previos.click() and self.uid != 0:
-                time.sleep(1)
-                Screen.get_from_id(self.uid - 1).show()
 
             pygame.draw.rect(c.win, cl.black, (190, 440, 120, 50), 1)
             gm_print('SAVE', 30, (210, 450))
 
-            next = Button((320, 440), (170, 50))
             next.hover()
             pygame.draw.rect(c.win, cl.black, (320, 440, 170, 50), 1)
             gm_print('NEXT', 30, (370, 450))
-            if next.click():
-                run = False
+
             pygame.display.update()
         time.sleep(1)
