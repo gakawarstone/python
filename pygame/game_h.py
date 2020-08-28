@@ -23,27 +23,9 @@ def menu():
     time.sleep(1)
 
 
-def btn():
-    run = True
-    while run:
-        pygame.time.delay(10)
-
-        if_close()
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_c]:
-            splash()
-        if keys[pygame.K_d]:
-            run = False
-
-        c.win.fill(cl.white)
-        star = Button((0, 0), (100, 100))
-        star.hover()
-        if star.click():
-            run = False
-
-        pygame.display.update()
-    time.sleep(0.5)
+def hover_zone(pos, size):
+    zone = Button(pos, size)
+    zone.hover(cl.greay)
 
 
 def dream(img_, text, sprt='', sprt_x=100):
@@ -256,12 +238,14 @@ class Frame:
 
     def show(self):
         run = True
+        next = Button((0, 0), (c.win_width, c.win_height))
         while run:
             pygame.time.delay(10)
 
             if_close()
 
             keys = pygame.key.get_pressed()
+            next_pressed = next.click()
             if keys[pygame.K_c]:
                 splash()
             if keys[pygame.K_d]:
@@ -269,14 +253,14 @@ class Frame:
             if keys[pygame.K_a] and self.uid != 0:
                 time.sleep(1)
                 Frame.get_from_id(self.uid - 1).show()
-
-            next = Button((0, 0), (c.win_width, c.win_height))
-            if next.click():
+            if next_pressed:
                 run = False
 
             draw_img(0, 0, self.background)
             if self.sprite:
                 self.sprite.show()
+
+            hover_zone((0, 0), (500, 50))
 
             greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
             pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
