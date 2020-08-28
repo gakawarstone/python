@@ -289,7 +289,7 @@ class Frame:
                 splash()
             if keys[pygame.K_d]:
                 run = False
-            if keys[pygame.K_a]:
+            if keys[pygame.K_a] and self.uid != 0:
                 time.sleep(1)
                 Frame.get_from_id(self.uid - 1).show()
 
