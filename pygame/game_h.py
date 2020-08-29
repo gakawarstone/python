@@ -244,6 +244,7 @@ class Frame:
 
             if_close()
 
+            print(self.uid)
             keys = pygame.key.get_pressed()
             next_pressed = next.click()
             if keys[pygame.K_c]:
@@ -260,7 +261,8 @@ class Frame:
             if self.sprite:
                 self.sprite.show()
 
-            hover_zone((0, 0), (500, 50))
+            if hover_zone((0, 0), (500, 50)):
+                return
 
             greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
             pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
@@ -279,9 +281,9 @@ class Screen(Frame):
         self.sprite = None
         self.chapter_name = None
 
-        self.uid = Screen.id
-        Screen.id_list.append(self)
-        Screen.id += 1
+        self.uid = Frame.id
+        Frame.id_list.append(self)
+        Frame.id += 1
 
     def show(self):
         run = True
@@ -301,10 +303,10 @@ class Screen(Frame):
                 run = False
             if keys[pygame.K_a] and self.uid != 0:
                 time.sleep(1)
-                Screen.get_from_id(self.uid - 1).show()
+                Frame.get_from_id(self.uid - 1).show()
             if previos_pressed:
                 time.sleep(1)
-                Screen.get_from_id(self.uid - 1).show()
+                Frame.get_from_id(self.uid - 1).show()
             if next_pressed:
                 run = False
 

@@ -25,6 +25,8 @@ class Button():
             rect = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
             pygame.draw.rect(rect, cl.greay, rect.get_rect())
             c.win.blit(rect, (self.x, self.y))
+            return True
+        return False
 
     def click(self):
         mouse = Mouse()
