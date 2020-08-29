@@ -244,7 +244,6 @@ class Frame:
 
             if_close()
 
-            print(self.uid)
             keys = pygame.key.get_pressed()
             next_pressed = next.click()
             if keys[pygame.K_c]:
@@ -288,6 +287,7 @@ class Screen(Frame):
     def show(self):
         run = True
         previos = Button((10, 440), (170, 50))
+        save = Button((190, 440), (120, 50))
         next = Button((320, 440), (170, 50))
         while run:
             pygame.time.delay(10)
@@ -323,6 +323,7 @@ class Screen(Frame):
             pygame.draw.rect(c.win, cl.black, (10, 440, 170, 50), 1)
             gm_print('PREVIOS', 30, (27, 450))
 
+            save.hover()
             pygame.draw.rect(c.win, cl.black, (190, 440, 120, 50), 1)
             gm_print('SAVE', 30, (210, 450))
 
