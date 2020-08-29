@@ -218,6 +218,10 @@ class Frame:
         except Exception:
             return False
 
+    @classmethod
+    def save(self):
+        pass
+
     class Sprite:
         def __init__(self, img_):
             self.img = img_
@@ -296,6 +300,7 @@ class Screen(Frame):
 
             keys = pygame.key.get_pressed()
             previos_pressed = previos.click() and self.uid != 0
+            save_pressed = save.click()
             next_pressed = next.click()
             if keys[pygame.K_c]:
                 splash()
@@ -309,6 +314,8 @@ class Screen(Frame):
                 Frame.get_from_id(self.uid - 1).show()
             if next_pressed:
                 run = False
+            if save_pressed:
+                Frame.save()
 
             c.win.fill(cl.dark_white)
             draw_img(0, 0, self.background)
