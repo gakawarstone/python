@@ -52,6 +52,19 @@ def frame(img_, text, sprt_=None, sprt_x=None):
     gf = Frame()
     gf.background = img_
     gf.text = text
+    gf.autoclose = False
+    if sprt_:
+        gf.sprite = Frame.Sprite(sprt_)
+        if sprt_x:
+            gf.sprite.x = sprt_x
+    gf.show()
+
+
+def first_frame(img_, text, sprt_=None, sprt_x=None):
+    gf = Frame()
+    gf.background = img_
+    gf.text = text
+    gf.autoclose = True
     if sprt_:
         gf.sprite = Frame.Sprite(sprt_)
         if sprt_x:
@@ -107,6 +120,7 @@ class Frame:
         self.background = None
         self.text = None
         self.sprite = None
+        self.outoclose = False
 
         self.uid = Frame.id
         Frame.id_list.append(self)
@@ -129,6 +143,8 @@ class Frame:
             if keys[pygame.K_a] and self.uid != 0:
                 time.sleep(1)
                 Frame.get_from_id(self.uid - 1).show()
+                if self.autoclose:
+                    break
             if next_pressed:
                 run = False
 

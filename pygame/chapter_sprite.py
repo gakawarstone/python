@@ -16,8 +16,8 @@ def grant():
 
 
 def all_():
-    game.frame(img.school500, text.grant_t, img.down_2)
+    game.first_frame(img.school500, text.grant_t, img.down_2)
 
 
 def mi6gun():
-    game.frame(img.school500, text.grant_f, img.sprite500)
+    game.first_frame(img.school500, text.grant_f, img.sprite500)
