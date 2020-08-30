@@ -231,8 +231,8 @@ class Choose_2(Frame):
         while len(Frame.id_list) - 1 > self.uid:
             Frame.id_list.pop()
         Frame.id = self.uid + 1
-        ch = 0
-        while ch == 0:
+        ch = None
+        while ch is None:
             pygame.time.delay(10)
 
             if_close()
@@ -245,10 +245,10 @@ class Choose_2(Frame):
                 Frame.get_from_id(self.uid - 1).show()
             if keys[pygame.K_q]:
                 time.sleep(1)
-                self.f_1()
+                ch = self.f_1
             if keys[pygame.K_e]:
                 time.sleep(1)
-                self.f_2()
+                ch = self.f_2
 
             draw_img(0, 0, self.background)
             if self.sprite:
@@ -257,12 +257,12 @@ class Choose_2(Frame):
             blue_button = Button((0, 400), (250, 100))
             if blue_button.click():
                 time.sleep(1)
-                self.f_1()
+                ch = self.f_1
 
             red_button = Button((250, 400), (250, 100))
             if red_button.click():
                 time.sleep(1)
-                self.f_2()
+                ch = self.f_2
 
             greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
             pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
@@ -282,3 +282,4 @@ class Choose_2(Frame):
             gm_print('PRESS E', 10, (450, 485), cl.green, c.win_width)
             pygame.display.update()
         time.sleep(1)
+        ch()

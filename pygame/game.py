@@ -10,9 +10,9 @@ def main():
     pygame.display.set_caption('GK')
 
     # functions call
+    grant()
     dio.dio()
     dio.dio_new()
-    grant()
 
     # close window
     pygame.quit()
