@@ -207,8 +207,18 @@ def screen(chapter_name, img_, text, sprt_=None, bg=img.bg_2, sprt_x=100):
     gf.show()
 
 
+class File_with_save:
+    def __init__(self, file_name):
+        self.link = file_name
+
+    def write(self, str):
+        with open(self.link, 'a') as the_file:
+            the_file.write(str + '\n')
+
+
 class Frame:
     id = 0
+    save_id = 0
     id_list = []
 
     @classmethod
@@ -219,7 +229,13 @@ class Frame:
             return False
 
     @classmethod
-    def save(self):
+    def save(self, uid):
+        sv = File_with_save('save.txt')
+        sv.write(str(uid))
+        Frame.save_id += 1
+
+    @classmethod
+    def load_save(self, save_id):
         pass
 
     class Sprite:
@@ -315,7 +331,7 @@ class Screen(Frame):
             if next_pressed:
                 run = False
             if save_pressed:
-                Frame.save()
+                Frame.save(self.uid)
 
             c.win.fill(cl.dark_white)
             draw_img(0, 0, self.background)
