@@ -1,4 +1,4 @@
-import game_h as game
+import pynovell as game
 import img
 import text
 chapter_name = 'SPRITE'
