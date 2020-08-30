@@ -341,6 +341,9 @@ class Choose_2(Frame):
         Frame.id += 1
 
     def show(self):
+        while len(Frame.id_list) - 1 > self.uid:
+            Frame.id_list.pop()
+        Frame.id = self.uid + 1
         ch = 0
         while ch == 0:
             pygame.time.delay(10)
