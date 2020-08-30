@@ -73,54 +73,6 @@ def if_close():
             quit()
 
 
-def choose_2(img_, ch_1, ch_2, sprt='', sprt_x=100):
-    ch = 0
-    while ch == 0:
-        pygame.time.delay(10)
-
-        if_close()
-
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_c]:
-            splash()
-        if keys[pygame.K_q]:
-            ch = 1
-        if keys[pygame.K_e]:
-            ch = 2
-
-        draw_img(0, 0, img_)
-        if sprt:
-            draw_img(sprt_x, 0, sprt)
-
-        blue_button = Button((0, 400), (250, 100))
-        if blue_button.click():
-            ch = 1
-
-        red_button = Button((250, 400), (250, 100))
-        if red_button.click():
-            ch = 2
-
-        greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
-        pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
-        c.win.blit(greay_rect, (0, 400))
-
-        blue_rect = pygame.Surface((250, 100), pygame.SRCALPHA)
-        pygame.draw.rect(blue_rect, cl.blue_a, blue_rect.get_rect())
-        c.win.blit(blue_rect, (0, 400))
-
-        red_rect = pygame.Surface((250, 100), pygame.SRCALPHA)
-        pygame.draw.rect(red_rect, cl.red_a, red_rect.get_rect())
-        c.win.blit(red_rect, (250, 400))
-
-        gm_print(ch_1, 15, (5, 402), cl.green)
-        gm_print(ch_2, 15, (255, 402), cl.green)
-        gm_print('PRESS Q', 10, (5, 485), cl.green)
-        gm_print('PRESS E', 10, (450, 485), cl.green, c.win_width)
-        pygame.display.update()
-    time.sleep(1)
-    return ch
-
-
 def moving(obj, x, y, speed=1):
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w] and y > 0:
@@ -183,7 +135,7 @@ def start():
     time.sleep(1)
 
 
-def choose_2_(img_, ch_1, ch_2, f_1, f_2, sprt_=None, sprt_x=100):
+def choose_2(img_, ch_1, ch_2, f_1, f_2, sprt_=None, sprt_x=100):
     gf = Choose_2()
     gf.background = img_
     gf.ch_1 = ch_1
@@ -398,6 +350,9 @@ class Choose_2(Frame):
             keys = pygame.key.get_pressed()
             if keys[pygame.K_c]:
                 splash()
+            if keys[pygame.K_a] and self.uid != 0:
+                time.sleep(1)
+                Frame.get_from_id(self.uid - 1).show()
             if keys[pygame.K_q]:
                 time.sleep(1)
                 self.f_1()
