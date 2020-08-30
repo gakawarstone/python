@@ -183,6 +183,19 @@ def start():
     time.sleep(1)
 
 
+def choose_2_(img_, ch_1, ch_2, sprt_=None, sprt_x=100):
+    gf = Choose_2()
+    gf.background = img_
+    gf.ch_1 = ch_1
+    gf.ch_2 = ch_2
+    if sprt_:
+        gf.sprite = Frame.Sprite(sprt_)
+        if sprt_x:
+            gf.sprite.x = sprt_x
+    ch = gf.show()
+    return ch
+
+
 def frame(img_, text, sprt_=None, sprt_x=None):
     gf = Frame()
     gf.background = img_
@@ -214,6 +227,9 @@ class File_with_save:
     def write(self, str):
         with open(self.link, 'a') as the_file:
             the_file.write(str + '\n')
+
+    def read(self, str_number):
+        pass
 
 
 class Frame:
@@ -356,3 +372,62 @@ class Screen(Frame):
 
             pygame.display.update()
         time.sleep(1)
+
+
+class Choose_2(Frame):
+    def __init__(self):
+        self.background = None
+        self.ch_1 = None
+        self.ch_2 = None
+        self.sprite = None
+
+        self.uid = Frame.id
+        Frame.id_list.append(self)
+        Frame.id += 1
+
+    def show(self):
+        ch = 0
+        while ch == 0:
+            pygame.time.delay(10)
+
+            if_close()
+
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_c]:
+                splash()
+            if keys[pygame.K_q]:
+                ch = 1
+            if keys[pygame.K_e]:
+                ch = 2
+
+            draw_img(0, 0, self.background)
+            if self.sprite:
+                self.sprite.show()
+
+            blue_button = Button((0, 400), (250, 100))
+            if blue_button.click():
+                ch = 1
+
+            red_button = Button((250, 400), (250, 100))
+            if red_button.click():
+                ch = 2
+
+            greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
+            pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
+            c.win.blit(greay_rect, (0, 400))
+
+            blue_rect = pygame.Surface((250, 100), pygame.SRCALPHA)
+            pygame.draw.rect(blue_rect, cl.blue_a, blue_rect.get_rect())
+            c.win.blit(blue_rect, (0, 400))
+
+            red_rect = pygame.Surface((250, 100), pygame.SRCALPHA)
+            pygame.draw.rect(red_rect, cl.red_a, red_rect.get_rect())
+            c.win.blit(red_rect, (250, 400))
+
+            gm_print(self.ch_1, 15, (5, 402), cl.green)
+            gm_print(self.ch_2, 15, (255, 402), cl.green)
+            gm_print('PRESS Q', 10, (5, 485), cl.green)
+            gm_print('PRESS E', 10, (450, 485), cl.green, c.win_width)
+            pygame.display.update()
+        time.sleep(1)
+        return ch

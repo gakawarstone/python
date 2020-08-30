@@ -11,7 +11,7 @@ def grant():
     game.frame(img.school500, text.down_3, img.down_2)
     game.frame(img.school500, text.down_4, img.down_3)
     game.frame(img.school500, text.grant_1, img.down_2)
-    ch = game.choose_2(img.school500, text.grant_mi6, text.grant_all)
+    ch = game.choose_2_(img.school500, text.grant_mi6, text.grant_all)
     if ch == 1:
         mi6gun()
     if ch == 2:
