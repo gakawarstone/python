@@ -183,17 +183,18 @@ def start():
     time.sleep(1)
 
 
-def choose_2_(img_, ch_1, ch_2, sprt_=None, sprt_x=100):
+def choose_2_(img_, ch_1, ch_2, f_1, f_2, sprt_=None, sprt_x=100):
     gf = Choose_2()
     gf.background = img_
     gf.ch_1 = ch_1
     gf.ch_2 = ch_2
+    gf.f_1 = f_1
+    gf.f_2 = f_2
     if sprt_:
         gf.sprite = Frame.Sprite(sprt_)
         if sprt_x:
             gf.sprite.x = sprt_x
-    ch = gf.show()
-    return ch
+    gf.show()
 
 
 def frame(img_, text, sprt_=None, sprt_x=None):
@@ -379,6 +380,8 @@ class Choose_2(Frame):
         self.background = None
         self.ch_1 = None
         self.ch_2 = None
+        self.f_1 = None
+        self.f_2 = None
         self.sprite = None
 
         self.uid = Frame.id
@@ -396,9 +399,11 @@ class Choose_2(Frame):
             if keys[pygame.K_c]:
                 splash()
             if keys[pygame.K_q]:
-                ch = 1
+                time.sleep(1)
+                self.f_1()
             if keys[pygame.K_e]:
-                ch = 2
+                time.sleep(1)
+                self.f_2()
 
             draw_img(0, 0, self.background)
             if self.sprite:
@@ -406,11 +411,13 @@ class Choose_2(Frame):
 
             blue_button = Button((0, 400), (250, 100))
             if blue_button.click():
-                ch = 1
+                time.sleep(1)
+                self.f_1()
 
             red_button = Button((250, 400), (250, 100))
             if red_button.click():
-                ch = 2
+                time.sleep(1)
+                self.f_2()
 
             greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
             pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
@@ -430,4 +437,3 @@ class Choose_2(Frame):
             gm_print('PRESS E', 10, (450, 485), cl.green, c.win_width)
             pygame.display.update()
         time.sleep(1)
-        return ch
