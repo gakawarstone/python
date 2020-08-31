@@ -33,8 +33,8 @@ def splash():
             rect_cl = cl.random()
 
         config.win.fill(cl.black)
-        pygame.draw.rect(config.win, rect_cl, (config.splash_x,
-                                               config.splash_y,
-                                               config.splash_width,
+        pygame.draw.ellipse(config.win, rect_cl, (config.splash_x,
+                                                  config.splash_y,
+                                                  config.splash_width,
                                                config.splash_height))
         pygame.display.update()
