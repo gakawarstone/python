@@ -105,15 +105,3 @@ def start():
         gm_print('Press space to continue...', 30, (85, 400), cl.dark_rose)
         pygame.display.update()
     time.sleep(1)
-
-
-class File_with_save:
-    def __init__(self, file_name):
-        self.link = file_name
-
-    def write(self, str):
-        with open(self.link, 'a') as the_file:
-            the_file.write(str + '\n')
-
-    def read(self, str_number):
-        pass

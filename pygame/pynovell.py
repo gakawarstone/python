@@ -5,6 +5,7 @@ import color as cl
 import config as c
 import time
 import img
+import easyfiles
 start = game.start
 
 
@@ -99,7 +100,7 @@ class Frame:
 
     @classmethod
     def save(self, uid):
-        sv = game.File_with_save('save.txt')
+        sv = easyfiles.File('save.txt')
         sv.write(str(uid))
         Frame.save_id += 1
 
