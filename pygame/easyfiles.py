@@ -3,10 +3,17 @@ class File:
         self.link = file_name
 
     def write(self, str):
+        """
+        write one string to the end of file
+        includes /n
+        """
         with open(self.link, 'a') as the_file:
             the_file.write(str + '\n')
 
     def read(self):
+        """
+        return list of file lines without \n
+        """
         outp = []
         with open(self.link) as the_file:
             for line in the_file:

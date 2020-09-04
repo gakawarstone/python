@@ -36,5 +36,5 @@ def splash():
         pygame.draw.ellipse(config.win, rect_cl, (config.splash_x,
                                                   config.splash_y,
                                                   config.splash_width,
-                                               config.splash_height))
+                                                  config.splash_height))
         pygame.display.update()
