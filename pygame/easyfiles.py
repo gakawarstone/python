@@ -1,6 +1,7 @@
 class File:
     def __init__(self, file_name):
         self.link = file_name
+        self.content = None
 
     def write(self, str):
         """
@@ -13,6 +14,7 @@ class File:
     def read(self):
         """
         return list of file lines without \n
+        you can take outp from attribute content
         """
         outp = []
         with open(self.link) as the_file:
