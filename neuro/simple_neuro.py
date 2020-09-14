@@ -54,11 +54,16 @@ def activate(x):
     return 1 / (1 + np.exp(-x))
 
 
-nw = Network()
-nw.create_layer(1)
-nw.layers_list[0][0].give_value(1)
-nw.create_layer(4)
-nw.create_layer(1)
-nw.link_layers()
-nw.count()
-print(nw.layers_list[2][0].get_value())
+def main():
+    nw = Network()
+    nw.create_layer(1)
+    nw.layers_list[0][0].give_value(2)
+    nw.create_layer(4)
+    nw.create_layer(1)
+    nw.link_layers()
+    nw.count()
+    print(activate(nw.layers_list[2][0].get_value()))
+
+
+if __name__ == '__main__':
+    main()
