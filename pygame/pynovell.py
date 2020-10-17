@@ -139,6 +139,9 @@ class Frame:
             next_pressed = next.click()
             if keys[pygame.K_c]:
                 splash()
+            if keys[pygame.K_m]:
+                menu = Modal()
+                menu.show()
             if keys[pygame.K_d]:
                 run = False
             if keys[pygame.K_a] and self.uid != 0:
@@ -152,9 +155,6 @@ class Frame:
             draw_img(0, 0, self.background)
             if self.sprite:
                 self.sprite.show()
-
-            if game.hover_zone((0, 0), (500, 50)):
-                return
 
             greay_rect = pygame.Surface((500, 100), pygame.SRCALPHA)
             pygame.draw.rect(greay_rect, cl.greay, greay_rect.get_rect())
@@ -296,3 +296,28 @@ class Choose_2(Frame):
             pygame.display.update()
         time.sleep(1)
         ch()
+
+
+class Modal():
+    def __init__(self):
+        self.width = c.win_width * 0.6
+        self.height = c.win_height * 0.9
+        self.x = (c.win_width - self.width) // 2
+        self.y = (c.win_height - self.height) // 2
+
+    def show(self):
+        run = True
+        while run:
+            pygame.time.delay(10)
+
+            if_close()
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_z]:
+                run = False
+
+            alpha = pygame.SRCALPHA
+            modal_win = pygame.Surface((self.width, self.height), alpha)
+            pygame.draw.rect(modal_win, cl.white_modal, modal_win.get_rect())
+            c.win.blit(modal_win, (self.x, self.y))
+
+            pygame.display.update()
