@@ -28,3 +28,6 @@ real_dio500 = pygame.image.load('img/real_dio500.jpg')
 barrel = pygame.image.load('img/barrel.png')
 mg_bg = pygame.image.load('img/mg-bg.png')
 fire = pygame.image.load('img/fire.png')
+
+# chapter naruto at chapter_2021.py
+room_night = pygame.image.load('img/room_night.png')

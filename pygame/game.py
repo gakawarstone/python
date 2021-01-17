@@ -2,6 +2,7 @@
 import pygame
 import chapter_dio as dio
 from chapter_sprite import grant
+from chapter_2021 import naruto
 
 
 def main():
@@ -13,6 +14,7 @@ def main():
     grant()
     dio.dio()
     dio.dio_new()
+    naruto()
 
     # close window
     pygame.quit()
