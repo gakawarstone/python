@@ -1,0 +1,9 @@
+# Jupyter lab dir
+.ipynb_checkpoints
+**/ipynb_checkpoints
+
+# python cache file
+**/__pycache__/
+
+# pycharm dir
+**/.idea
